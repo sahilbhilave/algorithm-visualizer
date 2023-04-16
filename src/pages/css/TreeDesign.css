@@ -84,8 +84,30 @@ body{
 
 @media (max-height: 800px) {
   #tree #info{
-    margin-bottom: 50px;
+    margin-bottom: 500px;
+  }
+  #tree input{
+    width: 50px;
   }
 
+}
 
+@media (max-height: 775px) {
+  #tree #head{
+    font-size: 30px;
+    margin: 0px;
+    padding: 5px;
+  }
+  #tree #buttons{
+    padding: 0px;
+  }
+}
+
+@media (max-height: 675px) {
+  #tree button{
+    margin: 0px;
+  }
+  #tree input{
+    width: 50px;
+  }
 }
