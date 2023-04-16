@@ -1,0 +1,138 @@
+/* Default styles */
+#home{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    transition: 1s;
+  }
+
+  
+  @font-face {
+    font-family: "Roboto";
+    src:url("./fonts/Roboto/Roboto-Black.ttf");
+    
+    font-family: "Roboto-Italics";
+    src:url("./fonts/Roboto/Roboto-BlackItalic.ttf")  
+  }
+  
+  #home body{
+    background-color: #222831;
+    font-family: Roboto, sans-serif;
+  }
+  
+  #head {
+    font-family: Roboto-Italics;
+    text-align: center;
+    font-size: 70px;
+    color: #F5E8C7;
+    padding: 30px;
+  }
+  
+  .home #title {
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #D65A31;
+    margin: 0 auto;
+    color: #222831;
+    text-align: center;
+    max-width: 50%;
+  }
+  
+  #home h2{
+    font-size: 20px;
+    margin-bottom: 0px;
+  }
+  
+  #home .row {
+    margin: 0 auto;
+    padding: 10px 30px 30px 30px;
+    background-color: #393E46;
+    text-align: center;
+    max-width: 50%;
+  }
+  
+  #home .column {
+    margin-top: 10px;
+    padding: 5px;
+    /* width: 100%; */
+    font-size: 10px;
+    background-color: #222831;
+    color: #EEEEEE;
+    /* border-radius: 25px; */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  #home .column:hover {
+    transform: translateY(-5px);
+    box-shadow: 1px 1px 5px #D65A31;
+    cursor: pointer;
+  }
+  
+  /* Media queries */
+  @media screen and (max-width: 768px) {
+    .home #title {
+      font-size: 16px;
+      padding: 10px;
+      max-width: 100%;
+    }
+    
+    #home .row {
+      padding: 20px;
+      max-width: 100%;
+      margin: auto;
+      text-align: center;
+    }
+  
+    #home .column {
+      padding: 15px;
+      margin: 10px auto;
+      /* width: 200px; */
+      
+      max-width: 100%;
+    }
+  }
+  
+  @media screen and (min-width: 769px) {
+    .home #title {
+      max-width: 50%;
+    }
+
+    
+  
+    #home .row {
+      max-width: 50%;
+    }
+  }
+
+
+  @media screen and (max-height: 900px) {
+    .home #head{
+      font-size: 60px;
+    }
+}
+
+@media screen and (max-height: 780px) {
+  .home #head{
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .home #head{
+    font-size: 40px;
+    margin: 0px;
+  }
+}
+
+@media screen and (max-height: 645px) {
+  .home #head{
+    /* font-size: 20px; */
+    margin: 0px;
+    padding: 5px;
+  }
+}

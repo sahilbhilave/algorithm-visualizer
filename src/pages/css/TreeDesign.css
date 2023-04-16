@@ -1,0 +1,91 @@
+*{
+  text-decoration: none;
+}
+body{
+  background-color: #222831;
+}
+#tree #head
+{
+  font-family: Roboto-Italics;
+  text-align: center;
+  font-size: 40px;
+  margin: 0px;
+  color: #F5E8C7;
+}
+
+
+
+#tree #nav
+{
+  padding: 15px;
+  color : white;
+  background-color: #393E46;
+  cursor: pointer;
+  transition: 0.6s;
+  margin : 0px 20px 0px 20px;
+}
+#tree #nav:hover{
+  background-color: #D65A31;
+}
+
+
+#tree #buttons{
+  text-align: center;
+  padding: 20px;
+  /* background-color: #393E46; */
+  margin-right: 20px;
+  margin-top: 0px;
+  color: white;
+}
+
+#tree form{
+  display: inline-block;
+}
+
+
+ button{
+  font-size: 15px;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  transition: 0.6s;
+  width: 100px;
+  /* border-radius: 20px; */
+}
+ button:hover{
+  box-shadow: 0 5px 15px black;
+  transition: 0.6s;
+}
+
+#tree #clear{
+  background-color: #221a17;
+  color: white;
+}
+
+#tree input{
+  padding: 10px;
+}
+
+
+#tree .footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  margin: auto;
+}
+
+
+#tree #info{
+  text-align: center;
+  color: white;
+}
+
+@media (max-height: 800px) {
+  #tree #info{
+    margin-bottom: 50px;
+  }
+
+
+}

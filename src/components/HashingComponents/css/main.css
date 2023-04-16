@@ -1,0 +1,132 @@
+body{
+   background-color: #222831;
+}
+
+.hash #title{
+   color: antiquewhite;
+   font-family: Roboto-Italics;
+}
+
+.hash #function {
+   color: white;
+}
+
+.hash #result{
+   color: white;
+}
+
+.hash .footer {
+    position: fixed;
+    left: 0px;
+    bottom: 50px;
+    padding-right : 10px;
+    width: 100%;
+    height: 15%;
+    /* background-color: white; */
+    color: white;
+    text-align: center;
+ }
+
+
+
+ .hash b{
+   display: block;
+}
+.hash #type{
+   /* width : 30%; */
+   padding : 10px;
+   font-size: 15px;
+   text-align: center;
+   margin : auto;
+   
+ }
+
+ .hash #ssize{
+   margin-left: 20px;
+   padding: 10px;
+   font-size: 15px;
+ }
+
+ .hash input{
+    width: 50px;
+    padding : 15px;
+    text-align: left;
+    margin : 30px;
+    width : 100px;
+ }
+
+ .hash button{
+    padding: 10px;
+    width : 100px;
+    margin : 10px;
+ }
+
+
+ @media (max-width: 700px) {
+   .hash .footer {
+      padding-right : 0px;
+      height: 20%;
+      text-align: center;
+   }
+
+   .hash #ssize{
+      font-size: 12px;
+    }
+    .hash #type
+   {
+      width: 130px;
+      font-size: 12px;
+   }
+   .hash input{
+      padding : 10px;
+      text-align: left;
+      margin : 20px;
+      width : 60px;
+   }
+  
+   .hash button{
+      padding: 10px;
+      width : 60px;
+      margin : 10px;
+   }
+ }
+
+ @media (max-height: 600px) {
+   .hash .footer {
+      bottom: 10px;
+   }
+ }
+
+ @media (max-height: 400px) {
+   .hash .footer {
+      bottom: 15px;
+   }
+ }
+
+ @media (max-width: 200px) {
+   .hash #type{
+      width : 500px;
+      padding : 10px;
+      font-size: 15px;
+      text-align: center;
+      margin : auto;
+    }
+    .hash button{
+      padding: 10px;
+      width : 40px;
+      margin : 0px;
+   }
+ }
+
+ @media (max-height: 600px) {
+   .hash button {
+     margin: 2px;
+     width: 50px;
+   }
+   .hash input{
+      margin: 2px;
+      width: 30px;
+
+   }
+   
+ }

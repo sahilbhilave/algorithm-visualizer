@@ -1,0 +1,168 @@
+.hash{
+  text-align: center;
+}
+.hash .content {
+  margin: auto;
+  width: 90%;
+  padding: 10px;
+  overflow-y: scroll;
+  height: 300px;
+}
+
+.hash #calc{
+  color: white;
+}
+
+
+.hash #nav
+{
+  padding: 10px;
+  color : white;
+  background-color: #393E46;
+  cursor: pointer;
+  margin-bottom: 5px;
+  transition: 0.6s;
+  margin : 0px 20px 0px 20px;
+}
+.hash #nav:hover{
+  background-color: #D65A31;
+}
+
+
+.hash input[type=checkbox] {
+  display: none;
+}
+.hash p{
+  margin: 10px;
+}
+.hash h2{
+  font-size: 30px;
+  margin: 10px;
+}
+
+.hash #credit{
+  margin: 5px;
+}
+
+
+
+.hash input[type=checkbox] ~ label {
+  margin-top: 10px;
+  background: #D65A31;
+  height: 20px;
+  color: #fff;
+  padding: 16px;
+  display: block;
+  
+}
+
+.hash input[type=checkbox] ~ label:hover {
+  background: #8b3e24;
+  cursor: pointer;
+  
+}
+
+.hash input[type=checkbox]:checked ~ label ~ .content { 
+  opacity: 0;
+  height: 0;
+  display: none;
+}
+.hash .content {
+  display: block;
+}
+
+.hash #size{
+  display: none;
+}
+
+
+@media (max-height: 920px) {
+  .hash #content {
+    height: 300px;
+  }
+  .hash p{
+    margin: 5px;
+  }
+  
+}
+
+
+
+@media (max-height: 880px) {
+  .hash h2{
+    margin: 5px;
+    font-size: 20px;
+  }
+}
+
+@media (max-height: 860px) {
+  .hash #content {
+    height: 270px;
+  }
+  h2{
+    margin: 5px;
+  }
+}
+
+@media (max-height: 830px) {
+  .hash #content {
+    height: 250px;
+  }
+  
+}
+
+@media (max-height: 790px) {
+  .hash #content {
+    height: 230px;
+  }
+  
+}
+@media (max-height: 770px) {
+  .hash #content {
+    height: 220px;
+  }
+  
+}
+
+@media (max-height: 760px) {
+  .hash #content {
+    height: 210px;
+  }
+  
+}
+
+@media (max-height: 740px) {
+  .hash #content {
+    height: 200px;
+  }
+  
+}
+
+@media (max-height: 730px) {
+  .hash #content {
+    height: 180px;
+  }
+  
+}
+
+@media (max-height: 700px) {
+  .hash #content {
+    height: 150px;
+  }
+  
+}
+
+@media (max-height: 670px) {
+  .hash #content {
+    height: 130px;
+  }
+  
+}
+
+
+@media (max-height: 640px) {
+  .hash #content {
+    height: 100px;
+  }
+  
+}
