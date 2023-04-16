@@ -127,8 +127,44 @@ body{
      width: 50px;
    }
    .hash input{
-      margin: 2px;
+      margin: 3px auto;
       width: 30px;
+      display:inline-block;
+
+   }
+   
+   .hash #type{
+      /* width : 30%; */
+      padding : 10px;
+      font-size: 10px;
+      text-align: center;
+      margin : auto;
+      
+    }
+   
+    .hash #ssize{
+      margin-left: 20px;
+      padding: 10px;
+      font-size: 10px;
+    }
+   
+ }
+
+
+
+ @media (max-height: 800px) {
+   #button {
+     margin: 5px;
+     padding: 5px;
+     /* width: 50px; */
+   }
+   #bottom{
+      text-align: center;
+   }
+   .hash input{
+      margin: 3px auto;
+      width: 50px;
+      display: block;
 
    }
    
