@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { HashRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import Tree from './pages/TreeDraw'
 import NoPage from './pages/NoPage';
@@ -6,7 +6,7 @@ import Hashing from './components/HashingComponents/HashTable'
 function App() {
   return (
     <div>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/home" element={<Home/>} />
@@ -14,7 +14,7 @@ function App() {
           <Route path="/hashing" element={<Hashing/>} />
           <Route path="*" element={<NoPage/>} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }

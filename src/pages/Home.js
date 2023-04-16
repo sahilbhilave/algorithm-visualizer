@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // eslint-disable-next-line
-import { BrowserRouter as Router, Switch, Route, Link, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route, Link, useLocation } from 'react-router-dom';
 import './css/Home.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import ScaleLoader from 'react-spinners/ScaleLoader';
