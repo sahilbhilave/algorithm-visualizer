@@ -83,9 +83,6 @@ body{
 }
 
 @media (max-height: 800px) {
-  #tree #info{
-    margin-bottom: 500px;
-  }
   #tree input{
     width: 50px;
   }
@@ -100,12 +97,17 @@ body{
   }
   #tree #buttons{
     padding: 0px;
+
+  }
+  #tree button,input,b{
+    font-size: 10px;
   }
 }
 
 @media (max-height: 675px) {
   #tree button{
     margin: 0px;
+    
   }
   #tree input{
     width: 50px;

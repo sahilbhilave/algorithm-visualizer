@@ -21,13 +21,13 @@ function TreeDraw() {
 
     if (node === null) {
       setRoot(new TreeNode(value));
-      document.getElementById("info").innerHTML =  `<br>Inserting Root Element : ${value}`;
+      document.getElementById("info").innerHTML = `<br>Inserting Root Element : ${value}`;
     } else if (value < node.value) {
 
       if (node.left === null) {
         node.left = new TreeNode(value);
         setRoot({ ...root });
-        document.getElementById("info").innerHTML =  `<br>Inserting ${value} At Left of ${node.value}`;
+        document.getElementById("info").innerHTML = `<br>Inserting ${value} At Left of ${node.value}`;
 
       } else {
         // document.getElementById("info").innerHTML =  `<br>Compare key with ${node.right.value}, Going Left`;
@@ -38,15 +38,14 @@ function TreeDraw() {
       if (node.right === null) {
         node.right = new TreeNode(value);
         setRoot({ ...root });
-        document.getElementById("info").innerHTML =  `<br>Inserting ${value} At Right of ${node.value}`;
+        document.getElementById("info").innerHTML = `<br>Inserting ${value} At Right of ${node.value}`;
       } else {
         // document.getElementById("info").innerHTML =  `<br>Compare key with ${node.value}, Going Right`;
 
         insertNode(node.right, value);
       }
     }
-    else if(value === node.value)
-    {
+    else if (value === node.value) {
       document.getElementById("info").innerHTML = `<br><b style="color:red">${value} Already Present</b>`;
 
     }
@@ -55,7 +54,7 @@ function TreeDraw() {
   function deleteNode(node, value, parent = null) {
     document.getElementById("info").innerHTML = "";
     if (node === null) {
-      document.getElementById("info").innerHTML =  `<b style="color:red">Element Not Found!</b>`;
+      document.getElementById("info").innerHTML = `<b style="color:red">Element Not Found!</b>`;
       return node;
     }
     if (value < node.value) {
@@ -71,7 +70,7 @@ function TreeDraw() {
       if (node === root) {
         if (node.left === null && node.right === null) {
           // Node is the only node in the tree
-          document.getElementById("info").innerHTML =  `<b style="color:green">Root Node Deleted!</b>`;
+          document.getElementById("info").innerHTML = `<b style="color:green">Root Node Deleted!</b>`;
           node = null;
           setRoot(null);
           return node;
@@ -79,13 +78,13 @@ function TreeDraw() {
           // Node has only one child on the right
           node = node.right;
           setRoot(node);
-          document.getElementById("info").innerHTML =  `<b style="color:green">Node Deleted Successfully!</b>`;
+          document.getElementById("info").innerHTML = `<b style="color:green">Node Deleted Successfully!</b>`;
           return node;
         } else if (node.right === null) {
           // Node has only one child on the left
           node = node.left;
           setRoot(node);
-          document.getElementById("info").innerHTML =  `<b style="color:green">Node Deleted Successfully!</b>`;
+          document.getElementById("info").innerHTML = `<b style="color:green">Node Deleted Successfully!</b>`;
 
           return node;
         } else {
@@ -106,7 +105,7 @@ function TreeDraw() {
           } else {
             parent.right = null;
           }
-          document.getElementById("info").innerHTML =  `<b style="color:green">Node Deleted Successfully!</b>`;
+          document.getElementById("info").innerHTML = `<b style="color:green">Node Deleted Successfully!</b>`;
 
           node = null;
           setRoot({ ...root });
@@ -120,7 +119,7 @@ function TreeDraw() {
           }
           node = node.right;
           setRoot({ ...root });
-          document.getElementById("info").innerHTML =  `<b style="color:green">Node Deleted Successfully!</b>`;
+          document.getElementById("info").innerHTML = `<b style="color:green">Node Deleted Successfully!</b>`;
 
           return node;
         } else if (node.right === null) {
@@ -132,7 +131,7 @@ function TreeDraw() {
           }
           node = node.left;
           setRoot({ ...root });
-          document.getElementById("info").innerHTML =  `<b style="color:green">Node Deleted Successfully!</b>`;
+          document.getElementById("info").innerHTML = `<b style="color:green">Node Deleted Successfully!</b>`;
 
           return node;
         } else {
@@ -159,39 +158,35 @@ function TreeDraw() {
   }
 
   function DFS() {
-    if(root === null)
-    {
+    if (root === null) {
       document.getElementById("info").innerHTML = '<b style="color:red">Root is Null!</b>';
     }
-    else
-    {
-    visitOrder = [];
-    inorderTraversal(root);
-    document.getElementById("info").innerHTML = `<br>DFS traversal order: ${visitOrder}`;
+    else {
+      visitOrder = [];
+      inorderTraversal(root);
+      document.getElementById("info").innerHTML = `<br>DFS traversal order: ${visitOrder}`;
     }
   }
 
   function BFS() {
-    if(root === null)
-    {
+    if (root === null) {
       document.getElementById("info").innerHTML = '<b style="color:red">Root is Null!</b>';
     }
-    else
-    {
-    visitOrder = [];
-    let queue = [root];
-    while (queue.length > 0) {
-      let node = queue.shift();
-      visitOrder.push(node.value);
-      if (node.left !== null) {
-        queue.push(node.left);
+    else {
+      visitOrder = [];
+      let queue = [root];
+      while (queue.length > 0) {
+        let node = queue.shift();
+        visitOrder.push(node.value);
+        if (node.left !== null) {
+          queue.push(node.left);
+        }
+        if (node.right !== null) {
+          queue.push(node.right);
+        }
       }
-      if (node.right !== null) {
-        queue.push(node.right);
-      }
+      document.getElementById("info").innerHTML = `<br>BFS traversal order: ${visitOrder}`;
     }
-    document.getElementById("info").innerHTML = `<br>BFS traversal order: ${visitOrder}`;
-  }
   }
 
   useEffect(() => {
@@ -256,13 +251,23 @@ function TreeDraw() {
   function handleInsert(e) {
     e.preventDefault();
     let value = parseInt(document.getElementById("Value").value);
-    insertNode(root, value);
+    if (value > 0) {
+      insertNode(root, value);
+    }
+    else {
+      document.getElementById('info').innerHTML = '<b style="color:red">Enter Valid Number</b>'
+    }
   }
 
   function handleDelete(e) {
     e.preventDefault();
     let value = parseInt(document.getElementById("Value").value);
-    deleteNode(root, value);
+    if (value > 0) {
+      deleteNode(root, value);
+    }
+    else {
+      document.getElementById('info').innerHTML = '<b style="color:red">Enter Valid Number</b>'
+    }
   }
 
 
@@ -300,59 +305,59 @@ function TreeDraw() {
 
 
   const [loading, setLoading] = useState(false);
-    useEffect(() => {
-        setLoading(true);
-        setTimeout(()=> {
-            setLoading(false);
-        },1000)
-    },[])
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000)
+  }, [])
 
   return (
     <div id="tree">
       {
-            loading ? 
-            <div style={{ display: 'flex', justifyContent: 'center',alignItems: 'center' , margin:'auto' , width: '100%', height: '100vh'}}>
+        loading ?
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 'auto', width: '100%', height: '100vh' }}>
 
             <ScaleLoader
-        loading={loading}
-        color = {"white"}
-        size={30}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-      />
-         </div>
+              loading={loading}
+              color={"white"}
+              size={30}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
+          </div>
 
-            : 
-            <div>
-      <h1 id="head">Binary Search Tree</h1>
-      <Link to="/home">
-      <div id="nav">
-      
-        Back
-        
-      </div>
-      </Link>
-      <canvas ref={canvasRef}></canvas>
+          :
+          <div>
+            <h1 id="head">Binary Search Tree</h1>
+            <Link to="/home">
+              <div id="nav">
 
-      <div id="info"></div>
+                Back
 
-      <div id="buttons" className='footer'>
-          <form onSubmit={handleInsert}>
-            <label htmlFor="insertValue"><b>Key : </b></label>
-            <input type="number" id="Value" />
-            <button type="submit">Insert</button>
-          </form>
-          <form onSubmit={handleDelete}>
-            <button type="submit">Delete</button>
-          </form>
-        
-        <button onClick={DFS}>DFS</button>
-        <button onClick={BFS}>BFS</button>
-        <button id="clear" onClick={Clear}>Clear</button>
+              </div>
+            </Link>
+            <canvas ref={canvasRef}></canvas>
 
-      </div>
-    </div>
-}
+            <div id="info"></div>
+
+            <div id="buttons" className='footer'>
+              <form onSubmit={handleInsert}>
+                <label htmlFor="insertValue"><b>Key : </b></label>
+                <input type="number" id="Value" />
+                <button type="submit">Insert</button>
+              </form>
+              <form onSubmit={handleDelete}>
+                <button type="submit">Delete</button>
+              </form>
+
+              <button onClick={DFS}>DFS</button>
+              <button onClick={BFS}>BFS</button>
+              <button id="clear" onClick={Clear}>Clear</button>
+
+            </div>
+          </div>
+      }
     </div>
   );
 }
