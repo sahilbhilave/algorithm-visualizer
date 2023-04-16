@@ -6,7 +6,7 @@ function Content() {
 
     return (
         <div >
-            <h2 id="title"><b>Chaining</b></h2>
+            <h2 id="title">Chaining</h2>
             <p id="function">Position = (Element + i) % Size</p>
             {/* <b id="credit">--Developed By Sahil Bhilave--</b> */}
             

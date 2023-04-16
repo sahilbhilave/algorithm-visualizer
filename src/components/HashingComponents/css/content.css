@@ -99,9 +99,6 @@
   .hash #content {
     height: 270px;
   }
-  h2{
-    margin: 5px;
-  }
 }
 
 @media (max-height: 830px) {
@@ -165,4 +162,14 @@
     height: 100px;
   }
   
+}
+
+
+@media (max-width: 450px) {
+  .hash button{
+    margin: 3px;
+  }
+  hash #content {
+    margin-bottom: 0px;
+  }
 }

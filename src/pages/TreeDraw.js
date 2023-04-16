@@ -21,16 +21,16 @@ function TreeDraw() {
 
     if (node === null) {
       setRoot(new TreeNode(value));
-      document.getElementById("info").innerHTML = `<br>Inserting Root Element : ${value}`;
+      document.getElementById("info").innerHTML = `Inserting Root Element : ${value}`;
     } else if (value < node.value) {
 
       if (node.left === null) {
         node.left = new TreeNode(value);
         setRoot({ ...root });
-        document.getElementById("info").innerHTML = `<br>Inserting ${value} At Left of ${node.value}`;
+        document.getElementById("info").innerHTML = `Inserting ${value} At Left of ${node.value}`;
 
       } else {
-        // document.getElementById("info").innerHTML =  `<br>Compare key with ${node.right.value}, Going Left`;
+        // document.getElementById("info").innerHTML =  `Compare key with ${node.right.value}, Going Left`;
 
         insertNode(node.left, value);
       }
@@ -38,15 +38,15 @@ function TreeDraw() {
       if (node.right === null) {
         node.right = new TreeNode(value);
         setRoot({ ...root });
-        document.getElementById("info").innerHTML = `<br>Inserting ${value} At Right of ${node.value}`;
+        document.getElementById("info").innerHTML = `Inserting ${value} At Right of ${node.value}`;
       } else {
-        // document.getElementById("info").innerHTML =  `<br>Compare key with ${node.value}, Going Right`;
+        // document.getElementById("info").innerHTML =  `Compare key with ${node.value}, Going Right`;
 
         insertNode(node.right, value);
       }
     }
     else if (value === node.value) {
-      document.getElementById("info").innerHTML = `<br><b style="color:red">${value} Already Present</b>`;
+      document.getElementById("info").innerHTML = `<b style="color:red">${value} Already Present</b>`;
 
     }
   }
@@ -164,7 +164,7 @@ function TreeDraw() {
     else {
       visitOrder = [];
       inorderTraversal(root);
-      document.getElementById("info").innerHTML = `<br>DFS traversal order: ${visitOrder}`;
+      document.getElementById("info").innerHTML = `DFS traversal order: ${visitOrder}`;
     }
   }
 
@@ -185,7 +185,7 @@ function TreeDraw() {
           queue.push(node.right);
         }
       }
-      document.getElementById("info").innerHTML = `<br>BFS traversal order: ${visitOrder}`;
+      document.getElementById("info").innerHTML = `BFS traversal order: ${visitOrder}`;
     }
   }
 
