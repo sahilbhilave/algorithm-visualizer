@@ -63,13 +63,15 @@ body{
  }
 
 
- @media (max-width: 700px) {
+ @media (max-height: 800px) {
    .hash .footer {
       padding-right : 0px;
-      height: 20%;
+      /* height: 20%; */
       text-align: center;
-      bottom: 0px;
+      bottom: 20px;
    }
+}
+   @media (max-height: 600px) {
 
    .hash #ssize{
       font-size: 12px;
@@ -92,6 +94,38 @@ body{
       margin : 10px;
       font-size: 10px;
    }
+ }
+
+
+ @media (max-width: 680px) {
+ .hash .footer {
+   padding-right : 0px;
+   height: 20%;
+   text-align: center;
+   bottom: 0px;
+}
+
+.hash #ssize{
+   font-size: 12px;
+ }
+ .hash #type
+{
+   width: 130px;
+   font-size: 12px;
+}
+.hash input{
+   padding : 10px;
+   text-align: left;
+   margin : 20px;
+   width : 60px;
+}
+
+button{
+   padding: 10px;
+   width : 60px;
+   margin : 10px;
+   font-size: 10px;
+}
  }
 
  @media (max-height: 600px) {
@@ -152,7 +186,7 @@ body{
 
 
 
- @media (max-height: 800px) {
+ @media (max-width: 400px) {
    #button {
      margin: 5px;
      padding: 5px;
