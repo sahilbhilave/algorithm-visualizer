@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import Tree from './pages/TreeDraw'
 import NoPage from './pages/NoPage';
 import Hashing from './components/HashingComponents/HashTable'
+import Graphs from './pages/Graphs'
 function App() {
   return (
     <div>
@@ -12,6 +13,7 @@ function App() {
           <Route path="/home" element={<Home/>} />
           <Route path="/tree" element={<Tree/>} />
           <Route path="/hashing" element={<Hashing/>} />
+          <Route path="/graph" element={<Graphs/>} />
           <Route path="*" element={<NoPage/>} />
         </Routes>
       </HashRouter>

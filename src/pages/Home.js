@@ -78,7 +78,7 @@ function App() {
 
             <p id="title">Graph Algorithms</p>
             <div className="row">
-              <Link to="/graph-traversal">
+              <Link to="/graph">
                 <div className="column">
                   <h2>Graph Traversal</h2>
                   <p>Insertion/Deletion | DFS | BFS</p>
