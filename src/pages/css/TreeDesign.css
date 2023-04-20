@@ -14,6 +14,16 @@ body{
 }
 
 
+.slider{
+  margin-top: 10px;
+  color: white;
+  text-align: center;
+}
+
+#slider-label{
+  display: block;
+  font-weight: bold;
+}
 
 #nav
 {
@@ -66,10 +76,12 @@ body{
   padding: 10px;
 }
 
+#info{
+  color: white;
+}
 
 #tree .footer {
-  position: fixed;
-  bottom: 0;
+  
   width: 100%;
   color: white;
   text-align: center;
@@ -90,11 +102,7 @@ body{
 }
 
 @media (max-height: 775px) {
-  #tree #head{
-    font-size: 30px;
-    margin: 0px;
-    padding: 5px;
-  }
+  
   #tree #buttons{
     padding: 0px;
 

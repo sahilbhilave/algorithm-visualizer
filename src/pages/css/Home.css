@@ -6,7 +6,9 @@
     text-decoration: none;
     transition: 1s;
   }
-
+#tree select{
+  padding: 10px;
+}
   
   @font-face {
     font-family: "Roboto";

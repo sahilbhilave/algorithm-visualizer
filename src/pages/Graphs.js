@@ -4,27 +4,29 @@ import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './css/Graph.css';
 
 function App() {
-    const [vertices, setVertices] = useState(10);
-    const [edges, setEdges] = useState(15);
+    const [vertices, setVertices] = useState(3);
+    const [edges, setEdges] = useState(3);
+    const [clicked, setClicked] = useState(false);
     const [graph, setGraph] = useState([]);
     const [startVertex, setStartVertex] = useState(0);
     const [traversal, setTraversal] = useState([]);
     const canvasRef = useRef(null);
-
+    const radius = 20; // Increase the node radius
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
-        const width = 500;
-        const height = 500;
-        const radius = 20; // Increase the node radius
-        const margin = radius * 5; // Increase the margin
+        const width = canvas.width;
+        const height = canvas.height;
+
+        const margin = radius * 2.5; // Increase the margin
 
         // Add color array
         const colors = ["#D65A31", "#6CB1A6", "#EBD56B", "#8A357B", "#EBB76B", "#EB8B6B", "#D2AEBF", "#B1D2E6", "#DAAD6B", "#8CBED6"];
-
+        // const colors = ["#D65A31"];
         // Generate random graph
         const graph = [];
         const usedCoords = new Set(); // Set of used coordinates
+        if(clicked === true){
         for (let i = 0; i < vertices; i++) {
             let x, y;
             do {
@@ -73,7 +75,7 @@ function App() {
             ctx.fill(); // Fill the node
             ctx.strokeStyle = "white"; // Set node stroke color
             ctx.stroke(); // Draw the node
-            ctx.fillStyle = "white"; // Set text color
+            ctx.fillStyle = "black"; // Set text color
             ctx.font = "16px Arial";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
@@ -86,7 +88,7 @@ function App() {
                         const dx = graph[neighbor].x - graph[i].x;
                         const dy = graph[neighbor].y - graph[i].y;
                         const distance = Math.sqrt(dx * dx + dy * dy);
-                        const radius = 20; // Radius of the nodes
+                        // const radius = 20; // Radius of the nodes
                         const lineLength = distance - radius; // Decrease the line length with the node radius
                         const offsetX = (dx / distance) * radius;
                         const offsetY = (dy / distance) * radius;
@@ -102,15 +104,15 @@ function App() {
                             graph[neighbor].y - offsetY
                         );
                         ctx.strokeStyle = colors[i % colors.length]; // Set line color
-                        ctx.lineWidth = 3; // Increase line width
+                        ctx.lineWidth = 1.5; // Increase line width
                         ctx.stroke(); // Draw the line
                     }
                 }
             }
         }
-
-
-    }, [vertices, edges, canvasRef]);
+        setClicked(false);
+    }
+    }, [ canvasRef, clicked]);
 
     // Depth-first search algorithm
     const dfs = (vertex, visited) => {
@@ -166,60 +168,66 @@ function App() {
         bfs(startVertex, visited);
         setTraversal([...traversal]);
     };
-
+    const handleButtonClick = () => {
+        setClicked(true);
+      };
     return (
         <div className="graph">
             <h1 id="head">Graph Traversal</h1>
             <Link to="/home">
-              <div id="nav">
+                <div id="nav">
 
-                Back
+                    Back
 
-              </div>
+                </div>
             </Link>
-            <canvas ref={canvasRef} width={500} height={500} />
-
-            <div>
+            <canvas ref={canvasRef}  height={500} />
+            <div id="info">
                 Traversal: {traversal.join(", ")}
             </div>
             <div className='footer'>
-            <div>
-                <label>
-                    Vertices:
-                    <input
-                        type="number"
-                        value={vertices}
-                        onChange={(event) => setVertices(parseInt(event.target.value))}
-                    />
-                </label>
-                <label>
-                    Edges:
-                    <input
-                        type="number"
-                        value={edges}
-                        onChange={(event) => setEdges(parseInt(event.target.value))}
-                    />
-                </label>
+                    <div>
+                        <label>
+                            Vertices:
+                            <input
+                                min="2"
+                                max="10"
+                                type="number"
+                                value={vertices}
+                                onChange={(event) => setVertices(parseInt(event.target.value))}
+                            />
+                        </label>
+                        <label>
+                            Max-Edges:
+                            <input
+                                min="0"
+                                max="10"
+                                type="number"
+                                value={edges}
+                                onChange={(event) => setEdges(parseInt(event.target.value))}
+                            />
+                        </label>
+                        <button onClick={handleButtonClick}>Generate Graph</button>
+                    </div>
+
+
+                    <div>
+                        <label>
+                            Start Vertex:
+                            <select value={startVertex} onChange={handleStartVertexChange}>
+                                {graph.map((vertex, index) => (
+                                    <option key={index} value={index}>
+                                        {index}
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+                        <button onClick={handleDFS}>DFS</button>
+                        <button onClick={handleBFS}>BFS</button>
+                    </div>
+                </div>
             </div>
-            
-                
-            <div>
-            <label>
-                    Start Vertex:
-                    <select value={startVertex} onChange={handleStartVertexChange}>
-                        {graph.map((vertex, index) => (
-                            <option key={index} value={index}>
-                                {index}
-                            </option>
-                        ))}
-                    </select>
-                </label>
-                <button onClick={handleDFS}>DFS</button>
-                <button onClick={handleBFS}>BFS</button>
-            </div>
-            </div>
-        </div>
-    );
+            );
 }
 
-export default App;
+            export default App;

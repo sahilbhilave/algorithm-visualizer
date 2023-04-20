@@ -9,12 +9,15 @@ function TreeNode(value) {
   this.value = value;
   this.left = null;
   this.right = null;
+  this.color = '';
 }
 
 function TreeDraw() {
   let [root, setRoot] = useState(null);
   let canvasRef = useRef(null);
-  let visitOrder = [];
+  let order = [];
+  const [speed, setSpeed] = useState(500);
+
 
   function insertNode(node, value, info) {
     document.getElementById("info").innerHTML = "";
@@ -149,12 +152,60 @@ function TreeDraw() {
   }
 
 
+  function highlightNode(node, delayTime) {
+    // Set the node's background color to yellow to highlight it
+    node.color = 'green';
+    setRoot({ ...root });
+
+    // Wait for the specified delay time before removing the highlight
+    setTimeout(() => {
+      node.color = '';
+      setRoot({ ...root });
+
+    }, delayTime);
+  }
+
+
+
+
+
+
   function inorderTraversal(node) {
     if (node !== null) {
       inorderTraversal(node.left);
-      visitOrder.push(node.value);
+      order.push(node);
       inorderTraversal(node.right);
     }
+  }
+
+  function preorderTraversal(node) {
+    if (node !== null) {
+      order.push(node);
+      preorderTraversal(node.left);
+      preorderTraversal(node.right);
+    }
+  }
+
+  function postorderTraversal(node) {
+    if (node !== null) {
+      postorderTraversal(node.left);
+      postorderTraversal(node.right);
+      order.push(node);
+    }
+  }
+
+
+  function colorNodes(displaySpeed) {
+    order.forEach((node, index) => {
+      setTimeout(() => {
+        highlightNode(node, displaySpeed);
+        
+        document.getElementById('info').innerText = document.getElementById('info').innerText + "" + node.value;
+        if(index !== order.length-1)
+          document.getElementById('info').innerText = document.getElementById('info').innerText + "->";
+      }, index * displaySpeed);
+    });
+
   }
 
   function DFS() {
@@ -162,22 +213,45 @@ function TreeDraw() {
       document.getElementById("info").innerHTML = '<b style="color:red">Root is Null!</b>';
     }
     else {
-      visitOrder = [];
-      inorderTraversal(root);
-      document.getElementById("info").innerHTML = `DFS traversal order: ${visitOrder}`;
+      order = [];
+      const dfsType = document.getElementById("dfsType").value;
+      switch (dfsType) {
+        case "inorder":
+          inorderTraversal(root);
+          colorNodes(speed);
+          document.getElementById("info").innerText = "Inorder Traversal Order\n";
+          break;
+          case "preorder":
+          preorderTraversal(root);
+          colorNodes(speed);
+          document.getElementById("info").innerText = "Preorder Traversal Order\n";
+          break;
+        case "postorder":
+          postorderTraversal(root);
+          colorNodes(speed);
+          document.getElementById("info").innerText = "Postorder Traversal Order\n";
+
+          break;
+        default:
+          console.log("Invalid DFS type selected");
+      }
+
+
     }
   }
 
-  function BFS() {
-    if (root === null) {
-      document.getElementById("info").innerHTML = '<b style="color:red">Root is Null!</b>';
-    }
-    else {
-      visitOrder = [];
+
+
+  function bfsTraversal(root)
+  {
+      order = [];
+
       let queue = [root];
       while (queue.length > 0) {
+
         let node = queue.shift();
-        visitOrder.push(node.value);
+        order.push(node);
+
         if (node.left !== null) {
           queue.push(node.left);
         }
@@ -185,14 +259,24 @@ function TreeDraw() {
           queue.push(node.right);
         }
       }
-      document.getElementById("info").innerHTML = `BFS traversal order: ${visitOrder}`;
+
+    }
+  
+  function BFS() {
+    if (root === null) {
+      document.getElementById("info").innerHTML = '<b style="color:red">Root is Null!</b>';
+    }
+    else {
+      bfsTraversal(root);
+      colorNodes(speed);
+      document.getElementById("info").innerHTML = "BFS Traversal Order<br>";
     }
   }
 
   useEffect(() => {
     let canvas = canvasRef.current;
     let context = canvas.getContext("2d");
-
+    
     canvas.width = window.innerWidth;
     canvas.height = 400;
 
@@ -211,7 +295,11 @@ function TreeDraw() {
 
       while (queue.length > 0) {
         let { node, x, y } = queue.shift();
-        let color = "#D65A31";
+        let color;
+        if (node.color === '')
+          color = "#D65A31";
+        else
+          color = node.color;
         context.beginPath();
         context.arc(x, y, circleRadius, 0, 2 * Math.PI);
         context.fillStyle = color;
@@ -337,11 +425,23 @@ function TreeDraw() {
 
               </div>
             </Link>
-            <canvas ref={canvasRef}></canvas>
+            <canvas width={400} height={400} className = 'canva' ref={canvasRef}></canvas>
 
             <div id="info"></div>
-
+            <div className='slider'>
+            <label id="slider-label">Slower Animation : </label>
+              <input
+                id="sliderr"
+                type="range"
+                min="500"
+                max="1000"
+                step="100"
+                value={speed}
+                onChange={(e) => setSpeed(parseInt(e.target.value))}
+              />
+            </div>
             <div id="buttons" className='footer'>
+            
               <form onSubmit={handleInsert}>
                 <label htmlFor="insertValue"><b>Key : </b></label>
                 <input type="number" id="Value" />
@@ -351,8 +451,15 @@ function TreeDraw() {
                 <button type="submit">Delete</button>
               </form>
 
-              <button onClick={DFS}>DFS</button>
-              <button onClick={BFS}>BFS</button>
+              <br></br>
+              <label htmlFor="dfsType">DFS:</label>
+
+              <select id="dfsType">
+                <option value="inorder">Inorder</option>
+                <option value="preorder">Preorder</option>
+                <option value="postorder">Postorder</option>
+              </select>
+              <button onClick={DFS}>DFS</button>              <button onClick={BFS}>BFS</button>
               <button id="clear" onClick={Clear}>Clear</button>
 
             </div>
