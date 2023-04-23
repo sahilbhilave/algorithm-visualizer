@@ -56,14 +56,39 @@ function App() {
           >
             <h1 id="head">Algorithm Visualizer</h1>
             <p id="title">Searching Algorithms</p>
-            <div className="row">
-              
+            <div className="row"> 
+            <Link to="/linear">
+                <div className="column">
+                  <h2>Linear Search</h2>
+                  <p>Insert/Delete/Search</p>
+                </div>
+              </Link>
+
+              <Link to="/binary">
+                <div className="column">
+                  <h2>Binary Search</h2>
+                  <p>Insert/Delete/Search</p>
+                </div>
+              </Link>
+
               <Link to="/hashing">
                 <div className="column">
                   <h2>Hashing Techniques</h2>
                   <p>Open Addressing</p>
                 </div>
               </Link>
+            </div>
+
+            <p id="title">Sorting Algorithms</p>
+            <div className="row"> 
+            <Link to="/selection">
+                <div className="column">
+                  <h2>Sorting</h2>
+                  <p>Selection,Bubble,Quick</p>
+                </div>
+              </Link>
+
+             
             </div>
 
             <p id="title">Tree Algorithms</p>

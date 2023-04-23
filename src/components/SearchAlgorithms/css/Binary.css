@@ -1,0 +1,130 @@
+.binary{
+    text-align: center;
+}
+
+
+.binary input[type=checkbox] ~ label {
+  margin-top: 10px;
+  background: #D65A31;
+  height: 20px;
+  color: #fff;
+  padding: 16px;
+  display: block;
+  
+}
+
+.binary input[type=checkbox] ~ label:hover {
+  background: #8b3e24;
+  cursor: pointer;
+  
+}
+
+.binary input[type=checkbox]:checked ~ label ~ #content { 
+  opacity: 0;
+  height: 0;
+  display: none;
+}
+
+.binary #content {
+  display: block;
+  color: white;
+}
+
+.binary input[type=checkbox] {
+  display: none;
+}
+
+
+.binary #content{
+  overflow: auto; 
+  height: 150px;
+  max-height: 150px;
+  margin: auto;
+  margin: 0px 0px 50px 0px;
+}
+
+.binary #slider-label
+{
+  color: white;
+}
+
+.binary #scroll{
+  overflow: auto; 
+  max-width: 100%;
+  margin: auto;
+}
+
+.binary #content{
+    padding: 30px;
+}
+
+.binary table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    display: inline-table;
+    color: white;
+    margin: 10px 0px 40px;
+  }
+  
+  .binary th,td {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+    padding: 10px;
+    /* width: 50%; */
+  }
+  
+  .binary th {
+    /* background-color: #ccc; */
+  }
+  
+  .binary tr {
+    /* background-color: #eee; */
+    transition: background-color 0.5s ease;
+  }
+  
+  .binary tr:hover {
+
+  }
+  
+  .binary .bold {
+    font-weight: bold;
+  }
+  
+  .binary .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    color: white;
+  }
+  
+  
+  
+  .binary input[type='number'] {
+    padding: 5px;
+    margin-right: 10px;
+    
+    border: none;
+    border-bottom: 2px solid white;
+    color: black;
+  }
+  
+  .binary input[type='number']::placeholder {
+    color: black;
+  }
+  
+ 
+  
+  .binary .slider-container {
+    margin-bottom: 20px;
+  }
+  
+  .binary .slider {
+    width: 200px;
+  }
+  
+  
+  
+  

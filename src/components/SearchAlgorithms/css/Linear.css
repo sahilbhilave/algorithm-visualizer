@@ -1,0 +1,113 @@
+.linear{
+    text-align: center;
+}
+
+
+.linear #info{
+    padding: 20px;
+}
+
+.linear table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    display: inline-table;
+  }
+  
+  .linear th,td {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+    /* width: 50%; */
+  }
+  
+  .linear th {
+    background-color: #ccc;
+  }
+  
+  .linear tr {
+    background-color: #eee;
+    transition: background-color 0.5s ease;
+  }
+  
+  .linear tr:hover {
+
+  }
+  
+  .linear .bold {
+    font-weight: bold;
+  }
+  
+  .linear .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    color: white;
+  }
+  
+  .linear .input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .linear input[type='text'] {
+    padding: 5px;
+    margin-right: 10px;
+    
+    border: none;
+    border-bottom: 2px solid white;
+    color: black;
+  }
+  
+  .linear input[type='text']::placeholder {
+    color: black;
+  }
+  
+  .linear button {
+    padding: 5px 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .linear button:hover {
+    background-color: #2e8b57;
+  }
+  
+  .linear .slider-container {
+    margin-bottom: 20px;
+  }
+  
+  .linear .slider {
+    width: 200px;
+  }
+  
+  .linear .log-container {
+    height: 100px;
+    width: 500px;
+    padding: 10px;
+    border: 1px solid black;
+    overflow-y: auto;
+    background-color: white;
+    color: black;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .linear table {
+      display: block;
+    }
+  
+    .linear th,td {
+      width: auto;
+    }
+  
+    .linear .log-container {
+      width: 100%;
+    }
+  }
+  
