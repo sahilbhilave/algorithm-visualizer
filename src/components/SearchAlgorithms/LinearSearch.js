@@ -22,6 +22,7 @@ function LinearSearch() {
   const tableRef = useRef();
 
   function insertElement() {
+    set();
     if (searchValue === '') {
       info.innerHTML = "<b style='color:red'>Please Enter Proper Number</b>";
     }
@@ -34,6 +35,7 @@ function LinearSearch() {
   }
 
   function deleteElement() {
+    set();
     let newElements = [...elements];
     let index = newElements.indexOf(searchValue);
     if(searchValue === '')
@@ -55,6 +57,7 @@ function LinearSearch() {
   }
 
   function searchElement() {
+    set();
     if(searchValue === '')
     {
       info.innerHTML = "<b style='color:red'>Please Enter Proper Number</b>";
@@ -91,7 +94,13 @@ function LinearSearch() {
   }
   }
 
+  function set() {
+    info = document.getElementById('info');
+    content = document.getElementById('content');
+  }
+
   function clear() {
+    set();
     let newElements = [...elements];
     newElements = [];
     setElements(newElements);
@@ -138,7 +147,7 @@ function LinearSearch() {
 
 
       <div id="scroll" style={{}}>
-        <table className="binary-search-table" ref={tableRef}>
+        <table style={{height:'100px'}} className="binary-search-table" ref={tableRef}>
           <thead>
             <tr>
               {elements.map((_, index) => (
@@ -172,6 +181,8 @@ function LinearSearch() {
       <div id="footer">
         <div className="slider-container">
           <label id="slider-label">Speed : </label>
+
+          
           <input
             type="range"
             min="1"
@@ -181,12 +192,16 @@ function LinearSearch() {
             className="slider"
           />
         </div>
+        <form onSubmit={insertElement}>
         <input
           type="number"
+          style={{width:'60px', padding:'12px'}}
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
         />
-        <button onClick={insertElement}>Insert</button>
+
+        <button type="submit">Insert</button>
+        </form>
         <button onClick={deleteElement}>Delete</button>
         <button onClick={searchElement}>Search</button>
         <button style={{ backgroundColor: '#393E46', color: 'white' }} onClick={clear}>Clear</button>

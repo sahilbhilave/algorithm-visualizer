@@ -84,7 +84,7 @@ function App() {
             <Link to="/selection">
                 <div className="column">
                   <h2>Sorting</h2>
-                  <p>Selection,Bubble,Quick</p>
+                  <p>Selection,Bubble</p>
                 </div>
               </Link>
 
