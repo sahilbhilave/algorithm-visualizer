@@ -21,8 +21,11 @@ function LinearSearch() {
   
   const tableRef = useRef();
 
-  function insertElement() {
+  function insertElement(event) {
+
     set();
+    event.preventDefault();
+
     if (searchValue === '') {
       info.innerHTML = "<b style='color:red'>Please Enter Proper Number</b>";
     }
@@ -195,7 +198,8 @@ function LinearSearch() {
         <form onSubmit={insertElement}>
         <input
           type="number"
-          style={{width:'60px', padding:'12px'}}
+          placeholder='Enter Key'
+          style={{width:'80px', padding:'12px'}}
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
         />

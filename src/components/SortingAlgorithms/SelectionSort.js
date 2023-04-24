@@ -28,8 +28,10 @@ function Selection() {
     content = document.getElementById('content');
   }
 
-  function insertElement() {
+  function insertElement(event) {
     set();
+    event.preventDefault();
+
     clearPanel();
     if (searchValue === '') {
       info.innerHTML = "<b style='color:red'>Please Enter Proper Number</b>";
@@ -282,10 +284,7 @@ function Selection() {
     setElements(newElements);
   }
 
-  function stopSorting() {
 
-
-  }
 
 
   function clear() {
@@ -418,7 +417,9 @@ function Selection() {
               <input
                 id = "input"
                 type="number"
-                style={{width:'60px', padding:'12px'}}
+                placeholder='Enter Key'
+
+                style={{width:'80px', padding:'12px'}}
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
               />
@@ -431,7 +432,7 @@ function Selection() {
                 {/* <option value="quick">Quick Sort</option> */}
               </select>
               <button id='sort' onClick={sort}>Sort</button>
-              <button id='stop' onClick={stopSorting} disabled>Stop</button >
+              <button id='stop'  disabled>Stop</button >
               <button onClick={randomize}>Shuffle</button>
               
               <button id='clear' style={{ backgroundColor: '#393E46', color: 'white' }} onClick={clear}>Clear</button>

@@ -18,8 +18,17 @@ function App() {
         const width = canvas.width;
         const height = canvas.height;
 
-        const margin = radius * 2.5; // Increase the margin
+        // // Set the new dimensions of the canvas
+        // canvas.width = 500;
+        // canvas.height = 500;
 
+        // // Set the CSS dimensions of the canvas to the original values
+        // canvas.style.width = `${width}px`;
+        // canvas.style.height = `${height}px`;
+
+
+        // const margin = radius * 2.5; // Increase the margin
+        const margin = 10;
         // Add color array
         const colors = ["#D65A31", "#6CB1A6", "#EBD56B", "#8A357B", "#EBB76B", "#EB8B6B", "#D2AEBF", "#B1D2E6", "#DAAD6B", "#8CBED6"];
         // const colors = ["#D65A31"];
@@ -27,15 +36,15 @@ function App() {
         const graph = [];
         const usedCoords = new Set(); // Set of used coordinates
         if(clicked === true){
-        for (let i = 0; i < vertices; i++) {
-            let x, y;
-            do {
-                x = margin + Math.random() * (width - margin * 2);
-                y = margin + Math.random() * (height - margin * 2);
-            } while (usedCoords.has(`${x},${y}`)); // Check if coordinate is already used
-            usedCoords.add(`${x},${y}`);
-            graph.push({ x, y });
-        }
+            for (let i = 0; i < vertices; i++) {
+                let x, y;
+                do {
+                  x = margin + Math.random() * (width - margin * 2);
+                  y = margin + Math.random() * (height - margin * 2);
+                } while (usedCoords.has(`${x},${y}`) || x < margin || y < margin || x > width - margin || y > height - margin); // Check if coordinate is already used and ensure it is within the bounds of the rectangular area
+                usedCoords.add(`${x},${y}`);
+                graph.push({ x, y });
+              }
         // Ensure minimum distance between nodes
         for (let i = 0; i < vertices; i++) {
             for (let j = 0; j < vertices; j++) {
@@ -43,11 +52,24 @@ function App() {
                     const dx = graph[j].x - graph[i].x;
                     const dy = graph[j].y - graph[i].y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < radius * 3) {
-                        const offsetX = (dx / distance) * radius * 3;
-                        const offsetY = (dy / distance) * radius * 3;
+                    if (distance < radius * 4) {
+                        const offsetX = (dx / distance) * radius * 4;
+                        const offsetY = (dy / distance) * radius * 4;
                         graph[j].x = graph[i].x + offsetX;
                         graph[j].y = graph[i].y + offsetY;
+
+
+                        if (graph[j].x < 0) {
+                            graph[j].x = 0;
+                          } else if (graph[j].x > width) {
+                            graph[j].x = width;
+                          }
+                          
+                          if (graph[j].y < 0) {
+                            graph[j].y = 0;
+                          } else if (graph[j].y > height) {
+                            graph[j].y = height;
+                          }
                     }
                 }
             }

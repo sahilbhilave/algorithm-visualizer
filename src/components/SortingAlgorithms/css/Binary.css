@@ -106,7 +106,7 @@
   
   
   
-  .binary input[type='number'] {
+  /* .binary input[type='number'] {
     padding: 5px;
     margin-right: 10px;
     
@@ -117,7 +117,7 @@
   
   .binary input[type='number']::placeholder {
     color: black;
-  }
+  } */
   
  
   

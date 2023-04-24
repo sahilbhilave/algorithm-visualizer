@@ -16,7 +16,7 @@ function TreeDraw() {
   let [root, setRoot] = useState(null);
   let canvasRef = useRef(null);
   let order = [];
-  const [speed, setSpeed] = useState(500);
+  const [speed, setSpeed] = useState(5);
 
 
   function insertNode(node, value, info) {
@@ -159,10 +159,12 @@ function TreeDraw() {
 
     // Wait for the specified delay time before removing the highlight
     setTimeout(() => {
+
+      
       node.color = '';
       setRoot({ ...root });
 
-    }, delayTime);
+    }, 1500/delayTime);
   }
 
 
@@ -196,15 +198,38 @@ function TreeDraw() {
 
 
   function colorNodes(displaySpeed) {
+    let do_task = true;
     order.forEach((node, index) => {
-      setTimeout(() => {
-        highlightNode(node, displaySpeed);
+      
+      const ide = setTimeout(() => {
+
+        const stopButton = document.getElementById('stop');
+        stopButton.addEventListener('click', () => {
+          clearTimeout(ide);
+          document.getElementById('dfs').disabled = false;
+          document.getElementById('bfs').disabled = false;
+          document.getElementById('stop').disabled = true;
+          document.getElementById('clear').disabled = false;
+          do_task = false;
+          return;
+        });
+        if(do_task === true){
+          highlightNode(node, displaySpeed);
         
         document.getElementById('info').innerText = document.getElementById('info').innerText + "" + node.value;
         if(index !== order.length-1)
           document.getElementById('info').innerText = document.getElementById('info').innerText + "->";
-      }, index * displaySpeed);
+        else if(index === order.length-1)
+        {
+          document.getElementById('dfs').disabled = false;
+          document.getElementById('bfs').disabled = false;
+          document.getElementById('clear').disabled = false;
+          document.getElementById('stop').disabled = true;
+        }
+      }
+      }, index * (1500/displaySpeed));
     });
+    
 
   }
 
@@ -213,6 +238,12 @@ function TreeDraw() {
       document.getElementById("info").innerHTML = '<b style="color:red">Root is Null!</b>';
     }
     else {
+
+      document.getElementById('dfs').disabled = true;
+      document.getElementById('bfs').disabled = true;
+      document.getElementById('clear').disabled = true;
+      document.getElementById('stop').disabled = false;
+
       order = [];
       const dfsType = document.getElementById("dfsType").value;
       switch (dfsType) {
@@ -222,7 +253,7 @@ function TreeDraw() {
           document.getElementById("info").innerText = "Inorder Traversal Order\n";
           break;
           case "preorder":
-          preorderTraversal(root);
+          preorderTraversal(root,);
           colorNodes(speed);
           document.getElementById("info").innerText = "Preorder Traversal Order\n";
           break;
@@ -267,6 +298,11 @@ function TreeDraw() {
       document.getElementById("info").innerHTML = '<b style="color:red">Root is Null!</b>';
     }
     else {
+      document.getElementById('dfs').disabled = true;
+      document.getElementById('bfs').disabled = true;
+      document.getElementById('clear').disabled = true;
+      document.getElementById('stop').disabled = false;
+
       bfsTraversal(root);
       colorNodes(speed);
       document.getElementById("info").innerHTML = "BFS Traversal Order<br>";
@@ -429,13 +465,12 @@ function TreeDraw() {
 
             <div id="info"></div>
             <div className='slider'>
-            <label id="slider-label">Slower Animation : </label>
+            <label id="slider-label">Speed : </label>
               <input
                 id="sliderr"
                 type="range"
-                min="500"
-                max="1000"
-                step="100"
+                min="1"
+                max="10"
                 value={speed}
                 onChange={(e) => setSpeed(parseInt(e.target.value))}
               />
@@ -443,8 +478,12 @@ function TreeDraw() {
             <div id="buttons" className='footer'>
             
               <form onSubmit={handleInsert}>
-                <label htmlFor="insertValue"><b>Key : </b></label>
-                <input type="number" id="Value" />
+                {/* <label htmlFor="insertValue"><b>Key : </b></label> */}
+                <input type="number"
+                       placeholder='Enter Key'
+                       style={{ width: '80px', padding: '12px' }}
+
+                id="Value" />
                 <button type="submit">Insert</button>
               </form>
               <form onSubmit={handleDelete}>
@@ -459,7 +498,9 @@ function TreeDraw() {
                 <option value="preorder">Preorder</option>
                 <option value="postorder">Postorder</option>
               </select>
-              <button onClick={DFS}>DFS</button>              <button onClick={BFS}>BFS</button>
+              <button id='dfs' onClick={DFS}>DFS</button>              
+              <button id='bfs' onClick={BFS}>BFS</button>
+              <button id='stop' disabled>Stop</button >
               <button id="clear" onClick={Clear}>Clear</button>
 
             </div>

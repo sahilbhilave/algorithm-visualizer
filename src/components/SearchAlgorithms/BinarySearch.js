@@ -23,7 +23,10 @@ function BinarySearch() {
 
   const tableRef = useRef();
 
-  function insertElement() {
+  function insertElement(event) {
+    set();
+    event.preventDefault();
+    
     if (searchValue === '') {
       info.innerHTML = "<b style='color:red'>Please Enter Proper Number</b>";
     }
@@ -37,6 +40,7 @@ function BinarySearch() {
   }
 
   function deleteElement() {
+    set();
     let newElements = [...elements];
     let index = newElements.indexOf(searchValue);
     if (searchValue === '') {
@@ -56,6 +60,7 @@ function BinarySearch() {
   }
 
   function searchElement() {
+    set();
     if (searchValue === '') {
       info.innerHTML = "<b style='color:red'>Please Enter Proper Number</b>";
 
@@ -103,7 +108,13 @@ function BinarySearch() {
     }
   }
 
+  function set() {
+    info = document.getElementById('info');
+    content = document.getElementById('content');
+  }
+
   function clear() {
+    set();
     let newElements = [...elements];
     newElements = [];
     setElements(newElements);
@@ -197,7 +208,8 @@ function BinarySearch() {
               <form onSubmit={insertElement}>
                 <input
                   type="number"
-                  style={{ width: '60px', padding: '12px' }}
+                  placeholder='Enter Key'
+                  style={{ width: '80px', padding: '12px' }}
                   value={searchValue}
                   onChange={(e) => setSearchValue(e.target.value)}
                 />

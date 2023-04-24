@@ -1,3 +1,6 @@
+*{
+  text-decoration: none;
+}
 .binary{
     text-align: center;
 }
@@ -102,18 +105,17 @@
   
   
   
-  .binary input[type='number'] {
-    padding: 5px;
+  /* .binary input[type='number'] {
     margin-right: 10px;
     
     border: none;
     border-bottom: 2px solid white;
     color: black;
-  }
+  } */
   
-  .binary input[type='number']::placeholder {
-    color: black;
-  }
+  /* .binary input[type='number']::placeholder {
+    color: rgb(97, 97, 97);
+  } */
   
  
   
