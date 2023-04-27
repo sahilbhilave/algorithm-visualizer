@@ -12,23 +12,15 @@ function App() {
     const [traversal, setTraversal] = useState([]);
     const canvasRef = useRef(null);
     const radius = 20; // Increase the node radius
+    let change = true;
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
         const width = canvas.width;
         const height = canvas.height;
 
-        // // Set the new dimensions of the canvas
-        // canvas.width = 500;
-        // canvas.height = 500;
-
-        // // Set the CSS dimensions of the canvas to the original values
-        // canvas.style.width = `${width}px`;
-        // canvas.style.height = `${height}px`;
-
-
-        // const margin = radius * 2.5; // Increase the margin
-        const margin = 10;
+        const margin = radius * 2.5; // Increase the margin
+        // const margin = 10;
         // Add color array
         const colors = ["#D65A31", "#6CB1A6", "#EBD56B", "#8A357B", "#EBB76B", "#EB8B6B", "#D2AEBF", "#B1D2E6", "#DAAD6B", "#8CBED6"];
         // const colors = ["#D65A31"];
