@@ -12,7 +12,8 @@ function App() {
     const [traversal, setTraversal] = useState([]);
     const canvasRef = useRef(null);
     const radius = 20; // Increase the node radius
-    let change = true;
+    const [visitedNodes, setVisitedNodes] = useState(new Set());
+
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");

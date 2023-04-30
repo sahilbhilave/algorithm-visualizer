@@ -22,6 +22,8 @@ function Main() {
     const insert = event => {
         event.preventDefault();
         clearColor();
+        document.getElementById("num").value = "";
+
         let c = document.getElementById('calc');
         if (num === "" || num < 0) {
             c.innerHTML = "<b>Please Enter Valid Number</b>"
@@ -216,8 +218,10 @@ function Main() {
                 </select>
             </div>
             <div id="bottom">
-            <input type="number" id="num" name="num" onChange={handleChange} value={num} autoComplete="off" placeholder='Enter Element' defaultValue='1' min="1" ></input>
-            <button type="button" onClick={insert}>Insert</button>
+                <form onSubmit={insert} id="myForm">
+            <input type="number" id="num" name="num" onChange={handleChange} value={num} autoComplete="off" placeholder='Enter Key' min="1" ></input>
+            <button type="submit">Insert</button>
+            </form>
             <button type="button" onClick={find}>Find</button>
             <button id="dela" type="button" onClick={del}>Delete</button>
             <button type="button" onClick={Reset}>Reset</button>

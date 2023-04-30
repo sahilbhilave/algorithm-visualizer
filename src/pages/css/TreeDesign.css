@@ -16,14 +16,20 @@ body{
 
 .slider{
   margin-top: 10px;
+  width: 200px;
+}
+#tree .slider-container {
+  margin-bottom: 20px;
   color: white;
   text-align: center;
+  
 }
 
 #slider-label{
   display: block;
   font-weight: bold;
 }
+
 
 #nav
 {
@@ -72,7 +78,7 @@ body{
   color: white;
 }
 
-#tree input{
+#tree input[type='number']{
   padding: 10px;
 }
 
@@ -94,10 +100,11 @@ body{
   color: white;
 }
 
-@media (max-height: 800px) {
-  #tree input{
-    width: 50px;
-  }
+@media (max-width: 600px) {
+ #head{
+  font-size: 40px;
+  padding: 2px;
+ }
 
 }
 
@@ -107,7 +114,7 @@ body{
     padding: 0px;
 
   }
-  #tree button,input,b{
+  #tree button,b{
     font-size: 10px;
   }
 }
@@ -115,9 +122,5 @@ body{
 @media (max-height: 675px) {
   #tree button{
     margin: 0px;
-    
-  }
-  #tree input{
-    width: 50px;
   }
 }

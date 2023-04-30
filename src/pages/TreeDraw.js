@@ -16,7 +16,7 @@ function TreeDraw() {
   let [root, setRoot] = useState(null);
   let canvasRef = useRef(null);
   let order = [];
-  const [speed, setSpeed] = useState(5);
+  const [animationSpeed, setAnimationSpeed] = useState(5);
 
 
   function insertNode(node, value, info) {
@@ -249,17 +249,17 @@ function TreeDraw() {
       switch (dfsType) {
         case "inorder":
           inorderTraversal(root);
-          colorNodes(speed);
+          colorNodes(animationSpeed);
           document.getElementById("info").innerText = "Inorder Traversal Order\n";
           break;
           case "preorder":
           preorderTraversal(root,);
-          colorNodes(speed);
+          colorNodes(animationSpeed);
           document.getElementById("info").innerText = "Preorder Traversal Order\n";
           break;
         case "postorder":
           postorderTraversal(root);
-          colorNodes(speed);
+          colorNodes(animationSpeed);
           document.getElementById("info").innerText = "Postorder Traversal Order\n";
 
           break;
@@ -304,7 +304,7 @@ function TreeDraw() {
       document.getElementById('stop').disabled = false;
 
       bfsTraversal(root);
-      colorNodes(speed);
+      colorNodes(animationSpeed);
       document.getElementById("info").innerHTML = "BFS Traversal Order<br>";
     }
   }
@@ -419,6 +419,10 @@ function TreeDraw() {
     context.stroke();
   }
 
+  function handleAnimationSpeedChange(e) {
+    setAnimationSpeed(e.target.value);
+  }
+
   function Clear() {
     let canvas = canvasRef.current;
     let context = canvas.getContext("2d");
@@ -464,16 +468,16 @@ function TreeDraw() {
             <canvas width={400} height={400} className = 'canva' ref={canvasRef}></canvas>
 
             <div id="info"></div>
-            <div className='slider'>
-            <label id="slider-label">Speed : </label>
-              <input
-                id="sliderr"
-                type="range"
-                min="1"
-                max="10"
-                value={speed}
-                onChange={(e) => setSpeed(parseInt(e.target.value))}
-              />
+            <div className="slider-container">
+                <label id="slider-label">Speed : </label>
+            <input
+                  type="range"
+                  min="1"
+                  max="10"
+                  value={animationSpeed}
+                  onChange={handleAnimationSpeedChange}
+                  className="slider"
+                />
             </div>
             <div id="buttons" className='footer'>
             
